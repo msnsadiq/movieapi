@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:statemanagement/api%20folder/ModelApi.dart';
 import 'package:statemanagement/api%20folder/apiitem.dart';
+import 'package:statemanagement/moonfall%20api/MoonfallModel.dart';
+import 'package:statemanagement/moonfall%20api/moonfallapii.dart';
+import 'package:statemanagement/secondpage.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({Key? key}) : super(key: key);
@@ -48,31 +51,53 @@ class _ScreenHomeState extends State<ScreenHome> {
                         crossAxisSpacing: 0,
                         children:
                             List.generate(snapshot.data!.results!.length, (index) {
+
                           return Stack(
+
                             children: [
+
                               Positioned(
                                 left: 0,
                                 right: 0,
                                 top: 0,
                                 bottom: 0,
-                                child: Card(
-                                  elevation: 5,
-                                  color: Colors.grey,
-                                 // margin: EdgeInsets.symmetric(horizontal: 33),
-                                  child: Image.network(
-                                    baseurl +
-                                        snapshot.data!.results![index].posterPath
-                                            .toString(),
-                                    fit: BoxFit.cover,
+                                child: GestureDetector(
+                                  onTap: (){
+                                    print("taped $index");
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>
+                                        HomeTwo(name: snapshot.data!.results![index].id.toString(), image:baseurl + snapshot.data!.results![index].posterPath.toString(),)));
+                                  },
+                                  child: Card(
+                                    elevation: 5,
+                                    color: Colors.grey,
+                                   // margin: EdgeInsets.symmetric(horizontal: 33),
+                                    child: Image.network(
+                                      baseurl +
+                                          snapshot.data!.results![index].posterPath
+                                              .toString(),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
-                              Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Text(
-                                    snapshot.data!.results![index].title.toString(),
-                                    style: TextStyle(color: Colors.white,),
-                                  ))
+                              // Align(
+                              //     alignment: Alignment.bottomCenter,
+                              //     child: Text(
+                              //       snapshot.data!.results![index].title.toString(),
+                              //       style: TextStyle(color: Colors.white,),
+                              //     )),
+                              // FutureBuilder(
+                              //   // future: moonfall(),
+                              //   builder: (BuildContext context, AsyncSnapshot<MoonfallModel> snapshot) {
+                              //   if(snapshot.hasData){
+                              //     return Column(
+                              //
+                              //     );
+                              //
+                              //   }
+                              //   return Container();
+                              // },),
+                             // HomeTwo(name: "fasil $index")
                             ],
                           );
                         })),
