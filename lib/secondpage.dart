@@ -17,7 +17,7 @@ class _HomeTwoState extends State<HomeTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink,
+      backgroundColor: Colors.white,
       body: FutureBuilder(
         future: moonfall(widget.name),
         builder: (BuildContext context, AsyncSnapshot<MoonfallModel> snapshot) {
@@ -29,7 +29,9 @@ class _HomeTwoState extends State<HomeTwo> {
                 Align(
                   alignment: Alignment.center,
                   child: Card(
-                    child: Center(child: Text(snapshot.data!.budget!.toString())),
+                    child: Center(child:
+
+               snapshot.data!.budget != null ?     Text(snapshot.data!.budget!.toString()):Container()),
                   ),
                 ),
                 Image.network(widget.image)

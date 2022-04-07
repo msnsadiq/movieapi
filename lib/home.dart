@@ -47,8 +47,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                     padding:  EdgeInsets.only(top:8.0, bottom: 8,left: 8,right: 8),
                     child: GridView.count(
                         crossAxisCount: 2,
-                        mainAxisSpacing: 28,
-                        crossAxisSpacing: 0,
+                        mainAxisSpacing: 20,
+                        crossAxisSpacing: 2,
                         children:
                             List.generate(snapshot.data!.results!.length, (index) {
 
@@ -65,10 +65,12 @@ class _ScreenHomeState extends State<ScreenHome> {
                                   onTap: (){
                                     print("taped $index");
                                     Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>
-                                        HomeTwo(name: snapshot.data!.results![index].id.toString(), image:baseurl + snapshot.data!.results![index].posterPath.toString(),)));
+                                        HomeTwo(name: snapshot.data!.results![index].id.toString(),
+                                          image:baseurl + snapshot.data!.results![index].posterPath.toString(),)));
                                   },
                                   child: Card(
-                                    elevation: 5,
+                                    elevation: 15,
+                                    shadowColor: Colors.black,
                                     color: Colors.grey,
                                    // margin: EdgeInsets.symmetric(horizontal: 33),
                                     child: Image.network(
@@ -80,12 +82,15 @@ class _ScreenHomeState extends State<ScreenHome> {
                                   ),
                                 ),
                               ),
-                              // Align(
-                              //     alignment: Alignment.bottomCenter,
-                              //     child: Text(
-                              //       snapshot.data!.results![index].title.toString(),
-                              //       style: TextStyle(color: Colors.white,),
-                              //     )),
+                              snapshot.data!.results![index].title != null ? Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Text(
+                                  snapshot.data!.results![index].title.toString(),
+                                  style: TextStyle(color: Colors.white,fontSize: 11,
+                                      fontFamily: "titlestyle",
+                                  ),
+                                ),
+                              ): Container(),
                               // FutureBuilder(
                               //   // future: moonfall(),
                               //   builder: (BuildContext context, AsyncSnapshot<MoonfallModel> snapshot) {
