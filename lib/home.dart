@@ -7,25 +7,23 @@ import 'package:statemanagement/moonfall%20api/moonfallapii.dart';
 import 'package:statemanagement/secondpage.dart';
 
 class ScreenHome extends StatelessWidget {
-
   final String baseurl = "https://image.tmdb.org/t/p/w185";
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 20,
-        title: Text("Trending Movies",style: GoogleFonts.aclonica(),),
-
-        backgroundColor: Colors.grey,
-      ),
+        appBar: AppBar(
+          toolbarHeight: 20,
+          title: Text(
+            "Trending Movies",
+            style: GoogleFonts.aclonica(),
+          ),
+          backgroundColor: Colors.grey,
+        ),
         body: FutureBuilder(
             future: fetchApi(),
             builder: (BuildContext context, AsyncSnapshot<ModelApi> snapshot) {
               if (snapshot.hasData) {
-
                 return Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(
@@ -38,10 +36,9 @@ class ScreenHome extends StatelessWidget {
                         EdgeInsets.only(top: 3.0, bottom: 8, left: 8, right: 8),
                     child: GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2
-                      ),
-                        itemCount:snapshot.data!.results!.length,
-                        itemBuilder: (ctx, index){
+                          crossAxisCount: 2),
+                      itemCount: snapshot.data!.results!.length,
+                      itemBuilder: (ctx, index) {
                         return Stack(
                           children: [
                             Positioned(
@@ -53,18 +50,18 @@ class ScreenHome extends StatelessWidget {
                                 onTap: () {
                                   print("taped $index");
                                   Navigator.of(context)
-                                      .push(MaterialPageRoute(
-                                      builder: (ctx) => HomeTwo(
-                                        iddata: snapshot
-                                            .data!.results![index].id
-                                            .toString(),
-                                        // image: baseurl +
-                                        //     snapshot
-                                        //         .data!
-                                        //         .results![index]
-                                        //         .posterPath
-                                        //         .toString(),
-                                      )));
+                                      .push(MaterialPageRoute(builder: (ctx) {
+                                    return HomeTwo(
+                                      iddata: snapshot.data!.results![index].id
+                                          .toString(),
+                                      // image: baseurl +
+                                      //     snapshot
+                                      //         .data!
+                                      //         .results![index]
+                                      //         .posterPath
+                                      //         .toString(),
+                                    );
+                                  }));
                                 },
                                 child: Card(
                                   elevation: 15,
@@ -83,17 +80,15 @@ class ScreenHome extends StatelessWidget {
                             ),
                             snapshot.data!.results![index].title != null
                                 ? Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Text(
-                                  snapshot.data!.results![index].title
-                                      .toString(),
-                                  style: GoogleFonts.michroma(
-                                    color: Colors.white,
-                                    fontSize: 11,
-
+                                    alignment: Alignment.bottomCenter,
+                                    child: Text(
+                                        snapshot.data!.results![index].title
+                                            .toString(),
+                                        style: GoogleFonts.michroma(
+                                          color: Colors.white,
+                                          fontSize: 11,
+                                        )),
                                   )
-                              ),
-                            )
                                 : Container(),
 
                             // FutureBuilder(
@@ -110,11 +105,10 @@ class ScreenHome extends StatelessWidget {
                             // HomeTwo(name: "fasil $index")
                           ],
                         );
-                        },
-                        // crossAxisCount: 2,
-                        // mainAxisSpacing: 20,
-                        // crossAxisSpacing: 2,
-
+                      },
+                      // crossAxisCount: 2,
+                      // mainAxisSpacing: 20,
+                      // crossAxisSpacing: 2,
                     ),
                   ),
                 );

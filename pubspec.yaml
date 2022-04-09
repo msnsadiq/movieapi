@@ -33,6 +33,7 @@ dependencies:
   google_fonts: ^2.3.1
   font_awesome_flutter: ^10.1.0
   community_material_icon: ^5.9.55
+  url_launcher: ^6.0.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -64,7 +65,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/image/
-  #   - images/a_dot_ham.jpeg
+    - assets/errorpic/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
