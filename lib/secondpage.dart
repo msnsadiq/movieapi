@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -106,6 +106,24 @@ class _HomeTwoState extends State<HomeTwo> {
                                     "language:  " +
                                         snapshot.data!.originalLanguage
                                             .toString(),
+                                    style: TextStyle(color: Colors.white),
+                                  )),
+                                ),
+                              )
+                            : Text("sorry, the page not found",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                )),
+                        snapshot.data!.originalLanguage != null
+                            ? SizedBox(
+                                width: 350,
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(33, 0, 0, 0),
+                                  child: Container(
+                                      child: Text(
+                                    "Release Date:  " +
+                                        snapshot.data!.releaseDate.toString(),
                                     style: TextStyle(color: Colors.white),
                                   )),
                                 ),
@@ -266,47 +284,53 @@ class _HomeTwoState extends State<HomeTwo> {
                                 ),
                               )
                             : Text(""),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 68.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              IconButton(
-                                  onPressed: () async {
-                                    await launch("https://www.facebook.com");
-                                  },
-                                  icon: Icon(
-                                    FontAwesomeIcons.facebook,
-                                    color: Colors.white,
-                                  )),
-                              IconButton(
-                                  onPressed: () async {
-                                    await launch("https://www.instagram.com");
-                                  },
-                                  icon: Icon(
-                                    FontAwesomeIcons.instagram,
-                                    color: Colors.white,
-                                  )),
-                              IconButton(
-                                  onPressed: () async {
-                                    await launch(
-                                        'https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D');
-                                  },
-                                  icon: Icon(
-                                    FontAwesomeIcons.twitter,
-                                    color: Colors.white,
-                                  )),
-                              IconButton(
-                                  onPressed: () async {
-                                    await launch('https://www.youtube.com/');
-                                  },
-                                  icon: Icon(
-                                    FontAwesomeIcons.youtube,
-                                    color: Colors.white,
-                                  )),
-                            ],
-                          ),
-                        ),
+                        snapshot.data!.posterPath != null
+                            ? Padding(
+                                padding: const EdgeInsets.only(top: 68.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    IconButton(
+                                        onPressed: () async {
+                                          await launch(
+                                              "https://www.facebook.com");
+                                        },
+                                        icon: Icon(
+                                          FontAwesomeIcons.facebook,
+                                          color: Colors.white,
+                                        )),
+                                    IconButton(
+                                        onPressed: () async {
+                                          await launch(
+                                              "https://www.instagram.com");
+                                        },
+                                        icon: Icon(
+                                          FontAwesomeIcons.instagram,
+                                          color: Colors.white,
+                                        )),
+                                    IconButton(
+                                        onPressed: () async {
+                                          await launch(
+                                              'https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D');
+                                        },
+                                        icon: Icon(
+                                          FontAwesomeIcons.twitter,
+                                          color: Colors.white,
+                                        )),
+                                    IconButton(
+                                        onPressed: () async {
+                                          await launch(
+                                              'https://www.youtube.com/');
+                                        },
+                                        icon: Icon(
+                                          FontAwesomeIcons.youtube,
+                                          color: Colors.white,
+                                        )),
+                                  ],
+                                ),
+                              )
+                            : SizedBox(),
                       ],
                     ),
                   ),
