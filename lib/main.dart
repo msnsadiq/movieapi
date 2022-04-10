@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:statemanagement/home.dart';
+import 'package:statemanagement/screensplash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,11 +16,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'statemanagement',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
-     home: ScreenHome(),
+      home: ScreenSplash(),
     );
   }
 }
-
