@@ -263,7 +263,7 @@ class _HomeTwoState extends State<HomeTwo> {
                                 padding: const EdgeInsets.only(top: 48.0),
                                 child: SizedBox(
                                   height: 30,
-                                  width: 150,
+                                  width: 250,
                                   child: Card(
                                     color: Colors.grey,
                                     child: Row(
