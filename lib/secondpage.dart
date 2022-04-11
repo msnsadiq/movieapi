@@ -180,11 +180,11 @@ class _HomeTwoState extends State<HomeTwo> {
                                 style: TextStyle(
                                   color: Colors.white,
                                 )),
-                        TextButton(onPressed: (){
+                        snapshot.data!.posterPath != null ?   TextButton(onPressed: (){
                           setState(() {
                             isloading = !isloading;
                           });
-                        }, child: Text(isloading ? "show less" : "show more")),
+                        }, child: Text(isloading ? "show less" : "show more")): SizedBox(),
                         snapshot.data!.voteAverage != null
                             ? Padding(
                                 padding: const EdgeInsets.only(top: 18.0),
