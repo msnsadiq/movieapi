@@ -24,6 +24,7 @@ class HomeTwo extends StatefulWidget {
 
 class _HomeTwoState extends State<HomeTwo> {
   @override
+  bool isloading = false;
   bool tappp = false;
   changeBool() {
     tappp = true;
@@ -170,6 +171,8 @@ class _HomeTwoState extends State<HomeTwo> {
                                   child: Text(
                                     snapshot.data!.overview.toString(),
                                     style: TextStyle(color: Colors.white),
+                                    maxLines: isloading ? null : 1,
+                                    overflow: isloading ? TextOverflow.visible : TextOverflow.ellipsis
                                   ),
                                 ),
                               )
@@ -177,6 +180,11 @@ class _HomeTwoState extends State<HomeTwo> {
                                 style: TextStyle(
                                   color: Colors.white,
                                 )),
+                        TextButton(onPressed: (){
+                          setState(() {
+                            isloading = !isloading;
+                          });
+                        }, child: Text(isloading ? "show less" : "show more")),
                         snapshot.data!.voteAverage != null
                             ? Padding(
                                 padding: const EdgeInsets.only(top: 18.0),
